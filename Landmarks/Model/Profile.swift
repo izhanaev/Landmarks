@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct Profile {
+struct Profile: Codable {
     var username: String
     var prefersNotifications = true
     var seasonalPhoto = Season.winter
     var goalDate = Date()
     
-    enum Season: String, CaseIterable, Identifiable {
+    enum Season: String, CaseIterable, Identifiable, Codable {
         case spring = "🌷"
         case summer = "🌞"
         case autumn = "🍂"

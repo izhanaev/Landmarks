@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ProfileSummary: View {
     @Environment(ModelData.self) var modelData
-    var profile: Profile
+    @Binding var editMode: Bool
+    @Binding var profile: Profile
     
     var body: some View {
         ScrollView {
@@ -35,10 +36,13 @@ struct ProfileSummary: View {
                 .padding(.bottom)
             }
         }
+        .fullScreenCover(isPresented: $editMode, content: {
+            ProfileEditor(profile: $profile)
+        })
     }
 }
 
 #Preview {
-    ProfileSummary(profile: .default)
+    ProfileSummary(editMode: .constant(false), profile: .constant(Profile(username: "")))
         .environment(ModelData())
 }

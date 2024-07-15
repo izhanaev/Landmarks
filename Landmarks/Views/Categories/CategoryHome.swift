@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CategoryHome: View {
     @Environment(ModelData.self) var modelData
-    @State private var showingProfile = false
 
     var body: some View {
         NavigationSplitView {
